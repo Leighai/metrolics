@@ -107,13 +107,14 @@
   div, section, footer, header {
     border: 1px solid #ccc;
   }
-  /* border to see visually */
+  /* added border to see visually */
   
   .column {
     background-color: rgb(243, 222, 194);
     margin: 1rem;
-  
   }
+  /* added background color to see visually */
+
   .heading {
     text-align: center;
   }
@@ -121,23 +122,28 @@
   
   /* row is important - decides margins will be and how it will grow */
   
-  /* Small only */
+  /* Small only - mobile sites */
   @media screen and (max-width: 39.9375em) {}
-  /* Medium and up */
+
+  /* Medium and up - tablet */
   @media screen and (min-width: 40em) {
     .row {
       display: grid;
       /* to make grid, need to put display grid here */
       width: 85vw;
       max-width: 70rem;
-      margin: o auto;
+      margin: 0 auto;
     }
+
     .m-col-2 {
       grid-template-columns: 1fr 1fr;
       /* 1 fr 1 fr are 2 columns */
+      /* desktop version needs additional columns not just 2, so add "m" to col-2*/
+      /* "m" in m-col-2 is for "medium" version */
     }
     .m-col-3 {
       grid-template-columns: repeat(3, 1fr);
+     /* could use 1fr, 1 fr but use repeat(3, 1fr) to make it easier  */  
     }
     .m-col-4 {
       grid-template-columns: repeat(4, 1fr);
@@ -152,6 +158,8 @@
     .span-full {
       grid-column-start: 1;
       grid-column-end: -1;
+      /* all instances where there's the initial heading (eg. Things that we do!) add to
+      all section headings in the column container */
     }
   
   }
@@ -162,27 +170,27 @@
       grid-column-end: -1;
     }
   }
-  /* Large and up */
+  /* Large and up -beyond tablet and up */
   @media screen and (min-width: 64em) {
     .l-col-2 {
       grid-template-columns: 1fr 1fr;
       /* 1 fr 1 fr are 2 columns */
+      /* "l" for l-col-2 stands for "large" columns */
     }
     .l-col-3 {
-      grid-template-columns: repeat(3,fr);
+      grid-template-columns: repeat(3, 1fr);
+      /* could use 1fr, 1 fr but use repeat(3, 1fr) to make it easier  */
   
     }
     .l-col-4 {
-      grid-template-columns: repeat(4,fr);
-      /* 1 fr 1 fr are 2 columns */
+      grid-template-columns: repeat(4, 1fr);
     }
     .l-col-5 {
-      grid-template-columns: repeat(5,fr);
-      /* 1 fr 1 fr are 2 columns */
+      grid-template-columns: repeat(5, 1fr);
     }
     .l-col-6 {
-      grid-template-columns: repeat(6,fr);
-      /* 1 fr 1 fr are 2 columns */
+      grid-template-columns: repeat(6, 1fr);
+
     }
   }
   /* Large only */
