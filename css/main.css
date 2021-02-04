@@ -6,309 +6,615 @@
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
  * Kroc Camen, and the H5BP dev community and team.
  */
+/* ==========================================================================
+   TABLE OF CONTENTS
+   ========================================================================== 
+
+   1. BASE
+    1.1 Page Rendering Defaults
+    1.2 User Experience Adjustents
+    1.3 Core Styling
+  2.LAYOUT
+    2.1 Core Layout
+    2.2 Main nav mobile first
+    2.3 Small only
+    2.4 Medium and up
+        2.4.1 Medium and up main navigation
+    2.5 Medium only
+    2.6 Large screens and up
+    2.7 Large only
+    2.8 Core article
+  3. MODULES
+    3.1 Page-slider
+    3.2 Project portfolio itemn
+  4. STATES 
+  5. THEME
+    5.1 Main nav colours & icons
+  6. UTILITIES
+  7. PRINT
+
 
 /* ==========================================================================
-   Base styles: opinionated defaults
+   BASE
    ========================================================================== */
 
-html {
-  color: #222;
-  font-size: 1em;
-  line-height: 1.4;
-}
-
-
-/* .navbar {
-  background-color: rgb(32, 128, 201);
-  border: 2px;
-  width: 40px;
-  height: 40px;
-  padding: 3px;
-
-} */
-
-/* .bar {
-  width: 35px;
-  height: 5px;
-  background-color: white;
-  margin: 5px 0;
-} */
-
-/* 
-.box {
-  background-color: rgb(208, 106, 106);
-  /* position: absolute; 
-
-  color: white;
-  width: 100px;
-  height: 70px;
-  margin: 0;
-}
-
-#box_date {
-
-  text-align: center;
-  top: 0px;
-  left: 0px;
-
-}
-
-.image_items {
-  top: 0px;
-  left: 0px;
-  /* position: relative; 
-} 
-
-.box_date
-{
-  width: 80px;
-  height: 60px;
-
-} */
-
-
-
-/*
- * Remove text-shadow in selection highlight:
- * https://twitter.com/miketaylr/status/12228805301
- *
- * Vendor-prefixed and regular ::selection selectors cannot be combined:
- * https://stackoverflow.com/a/16982510/7133471
- *
- * Customize the background color to match your design.
- */
-
-::-moz-selection {
-  background: #b3d4fc;
-  text-shadow: none;
-}
-
-::selection {
-  background: #b3d4fc;
-  text-shadow: none;
-}
-
-/*
- * A better looking default horizontal rule
- */
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
-}
-
-/*
- * Remove the gap between audio, canvas, iframes,
- * images, videos and the bottom of their containers:
- * https://github.com/h5bp/html5-boilerplate/issues/440
- */
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-  vertical-align: middle;
-}
-
-/*
- * Remove default fieldset styles.
- */
-
-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-
-/*
- * Allow only vertical resizing of textareas.
- */
-
-textarea {
-  resize: vertical;
-}
-
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
-
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-
-/*
- * Hide visually and from screen readers
- */
-
-.hidden,
-[hidden] {
-  display: none !important;
-}
-
-/*
- * Hide only visually, but have it available for screen readers:
- * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- *
- * 1. For long content, line feeds are not interpreted as spaces and small width
- *    causes content to wrap 1 word per line:
- *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
- */
-
-.sr-only {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  /* 1 */
-}
-
-/*
- * Extends the .sr-only class to allow the element
- * to be focusable when navigated to via the keyboard:
- * https://www.drupal.org/node/897638
- */
-
-.sr-only.focusable:active,
-.sr-only.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  white-space: inherit;
-  width: auto;
-}
-
-/*
- * Hide visually and from screen readers, but maintain layout
- */
-
-.invisible {
-  visibility: hidden;
-}
-
-/*
- * Clearfix: contain floats
- *
- * For modern browsers
- * 1. The space content is one way to avoid an Opera bug when the
- *    `contenteditable` attribute is included anywhere else in the document.
- *    Otherwise it causes space to appear at the top and bottom of elements
- *    that receive the `clearfix` class.
- * 2. The use of `table` rather than `block` is only necessary if using
- *    `:before` to contain the top-margins of child elements.
- */
-
-.clearfix::before,
-.clearfix::after {
-  content: " ";
-  display: table;
-}
-
-.clearfix::after {
-  clear: both;
-}
-
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */
-}
-
-@media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */
-}
-
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   https://www.phpied.com/delay-loading-your-print-css/
-   ========================================================================== */
-
-@media print {
-  *,
-  *::before,
-  *::after {
-    background: #fff !important;
-    color: #000 !important;
-    /* Black prints faster */
-    box-shadow: none !important;
-    text-shadow: none !important;
+   html {
+    color: #222;
+    font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1em;
+    line-height: 1.4;
   }
-
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-
-  a[href]::after {
-    content: " (" attr(href) ")";
-  }
-
-  abbr[title]::after {
-    content: " (" attr(title) ")";
-  }
-
+  
   /*
-   * Don't show links that are fragment identifiers,
-   * or use the `javascript:` pseudo protocol
+   * Remove text-shadow in selection highlight:
+   * https://twitter.com/miketaylr/status/12228805301
+   *
+   * Vendor-prefixed and regular ::selection selectors cannot be combined:
+   * https://stackoverflow.com/a/16982510/7133471
+   *
+   * Customize the background color to match your design.
    */
-  a[href^="#"]::after,
-  a[href^="javascript:"]::after {
+
+  
+  ::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+  }
+  
+  ::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+  }
+  
+  /*
+   * A better looking default horizontal rule
+   */
+  
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+  }
+  
+  /*
+   * Remove the gap between audio, canvas, iframes,
+   * images, videos and the bottom of their containers:
+   * https://github.com/h5bp/html5-boilerplate/issues/440
+   */
+  
+  audio,
+  canvas,
+  iframe,
+  img,
+  svg,
+  video {
+    vertical-align: middle;
+  }
+  
+  /*
+   * Remove default fieldset styles.
+   */
+  
+  fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /*
+   * Allow only vertical resizing of textareas.
+   */
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  img {
+    width: 100%;
+    /* makes it mobile */
+  }
+  
+  h1 {
+    color: black;
+  }
+  
+  /* ==========================================================================
+     LAYOUT
+     ========================================================================== */
+  
+  div, section, footer, header {
+    /* border: 1px solid #ccc; */
+  }
+  /* added border to see visually */
+  
+  .row { 
+    /* display grid put back here and rest in media screen medium and up breakpoint for mobile display*/
+    display: grid;
+    /* to make grid, need to put display grid here */
+    row-gap: 1rem;
+    /* row gap instead of margins */
+    /* width: 85vw;
+    max-width: 70rem;
+    margin: 0 auto; */
+    margin: 0 1rem 3rem 1rem;
+  }
+  /* row is important - decides margins will be and how it will grow */
+
+  .row-no-margin {
+    margin-bottom: 0 !important;
+  }
+
+  .column {
+    position: relative;
+    /* background-color: rgb(243, 222, 194);
+    margin: 1rem; */
+  }
+  /* added background color to see visually */
+
+  .heading {
+    text-align: center;
+    font-family: Ubuntu, Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 400;
+  }
+
+  .tagline {
+    margin-top: -0.8rem;
+    font-size: 0.7rem;
+    text-align: center;
+    color: rgba(128,128,128);
+
+  }
+
+  .logo {
+    max-height: 2.5rem;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .main-nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+  } 
+
+  .main-nav__item {
+    display: block;
+    position: relative;
+    /* relative added  to nav items to allow absolute positioning of child elements*/
+    width: 100%;
+    padding: 1rem 1rem 1rem 100%;
+    font-size: 1.3rem;
+    text-decoration: none;
+    text-align: left;
+    color: white;
+    line-height: 4rem;
+    /* line-height to allow for link text vertical positioning */
+    background-repeat: no-repeat; 
+    /* added here from mobile medium */
+    background-position-x: 44%;
+    background-position-y: center;
+    background-size: 3.1rem, 1.7rem;
+  }
+  
+  .main-nav__item::after {
+    content: ">";
+    /* visual mockup tells us that a small right pointing angle bracket should be affixed to the link text  */
+    display: inline-block;
+    position: absolute;
+    right: 1rem;
+  }
+  /* ::after pseudo class helpful when we need content added without actually adding content in HTML */
+  /* absolute positioning & 1rem right ensure that bracket will be aligned to far right at 1rem margin - works bc parent element's
+  position is set to relative */
+
+  .main-nav__item.active::after {
     content: "";
   }
+  
+  /* Small only - mobile sites */
+  @media screen and (max-width: 39.9375em) {
+    .logo {
+      max-height: 3rem;
+      position: static;
+    }
+    
+    .s-hide {
+      display:none;
+    }
 
-  pre {
-    white-space: pre-wrap !important;
+    .s-show {
+      display: flex;
+    }
+
+    .mobile-nav {
+      position: absolute;
+      right: 1rem;
+      top: 0rem;
+      z-index: 1;
+      font-size: 0rem;
+      padding: 1.5rem;
+      background-image:url(../img/icon/bars.svg);
+      background-repeat: no-repeat;
+      background-size: 1.8rem;
+      background-position: center center;
+      background-color: #2A6EEB;
+      /*  for hamburger menu - only add to small breakpoint point */
+      /* absolute positioning within relatively positioned row to position to the top right */
+    }
+
+    .main-nav__item::after {
+      display: inline-block;
+      position: static;
+      /* static returns to its original position */
+      padding-left: 1rem;
+    }
+
   }
 
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
+  /* Medium and up - tablet */
+  @media screen and (min-width: 40em) {
+    .row { 
+      width: 85vw;
+      max-width: 70rem;
+      column-gap: 1.5rem;
+      row-gap: 1.5rem;
+      margin: 0 auto 3rem auto;
+      /* display: grid; /* display grid above and moved from media screen medium and up breakpoint for mobile display*/ */
+      /* to make grid, need to put display grid here */
+    }
+
+    .sub-grid {
+      display: grid;
+      column-gap: 0.5rem;
+      row-gap: 0.5rem;
+    }
+
+    .m-col-2 {
+      grid-template-columns: 1fr 1fr;
+      /* 1 fr 1 fr are 2 columns */
+      /* desktop version needs additional columns not just 2, so add "m" to col-2*/
+      /* "m" in m-col-2 is for "medium" version */
+    }
+    .m-col-3 {
+      grid-template-columns: repeat(3, 1fr);
+     /* could use 1fr, 1 fr but use repeat(3, 1fr) to make it easier  */  
+    }
+    .m-col-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .m-col-5 {
+      grid-template-columns: repeat(5, 1fr);
+    }
+    .m-1-2 {
+      grid-template-columns: 1fr 2fr;
+    }
+
+    .span-full {
+      grid-column-start: 1;
+      grid-column-end: -1;
+      /* all instances where there's the initial heading (eg. Things that we do!) add to
+      all section headings in the column container */
+    }
+
+    .main-nav {
+      display: flex;
+      flex-direction: row;
+    } 
+
+    .main-nav__item {
+      padding: 4rem 1rem 0rem 0.5rem;
+      line-height: 2rem;
+      font-size: 0.8rem;
+      text-align: left;
+      background-color: rgb(184, 184, 184);
+      /* background-repeat: no-repeat; prop should define in mobile version - removed to avoid repeating ourselves */
+      background-position-x: center;
+      background-position-y: center;
+      background-size: 2.3rem, 1.4rem;
+
+    } 
+
   }
 
+  /* Medium only - wont' expand more*/
+  @media screen and (min-width: 40em) and (max-width: 63.9375em) {
+    .special-project {
+      grid-column-start: 1;
+      grid-column-end: -1;
+    }
+
+    .special-project img {
+      /* temp rule */
+      max-height: 20rem;
+    }
+
+    .m-hide {
+      display: none;
+    }
+  }
+  /* Large and up -beyond tablet and up */
+  @media screen and (min-width: 64em) {
+    .l-col-2 {
+      grid-template-columns: 1fr 1fr;
+      /* 1 fr 1 fr are 2 columns */
+      /* "l" for l-col-2 stands for "large" columns */
+    }
+    .l-col-3 {
+      grid-template-columns: repeat(3, 1fr);
+      /* could use 1fr, 1 fr but use repeat(3, 1fr) to make it easier  */
+    
+    }
+
+    .l-col-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .l-col-5 {
+      grid-template-columns: repeat(5, 1fr);
+    }
+    .l-col-6 {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    .l-hide {
+      display: none;
+    }
+
+  }
+
+  /* Large only */
+  @media screen and (min-width: 64em) and (max-width: 74.9375em) {
+
+  }
+  
+  /* work from tablet version and up */
+  
+  
+  /* ==========================================================================
+     MODULES
+     ========================================================================== */
+  
+    .page__slider {
+    background-color: rgb(230, 230, 230);
+    }
+
+    .page__slider img {
+      /* temporary height limit */
+      height: 25vh;
+    }
+
+    .project {
+      position: relative;
+      margin: 0;
+    }
+    
+    .project__caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(128, 128, 128)
+
+    }
+  
+  /* ==========================================================================
+     THEME
+     ========================================================================== */
+    
+    .page__footer {
+      background-color: #222;
+    }
+    
+    .page__footer .row {
+      background-color: #222;
+      background-image: url(../img/footerbar.png);
+      background-repeat: no-repeat;
+      background-position: bottom right;
+      padding-bottom: 2rem;
+    }
+
+    .inverted {
+      color: white;
+    }
+
+    /* main nav colours & icons */
+    /* to add colors - used nth() selector instead of specifically naming ea menu item */
+    /* each nav item is counted w/ a nth() pseudo class selector - it matches elements based on their
+    position in a group of siblings */
+    /* added icons - 1 svg for circle and 1 for icon - both added as layered background */
+
+    .main-nav__item:nth-child(1) {
+      background-color: #25C389;
+      background-image:url(../img/icon/circle.svg), url(../img/icon/bullhorn.svg);
+    }
+
+    .main-nav__item:nth-child(2) {
+      background-color: #FFB901;
+      background-image:url(../img/icon/circle.svg), url(../img/icon/bullhorn.svg);
+    }
+    .main-nav__item:nth-child(3) {
+      background-color: #DE6262;
+      background-image:url(../img/icon/circle.svg), url(../img/icon/bullhorn.svg);
+    }
+    .main-nav__item:nth-child(4) {
+      background-color: #1691BD;
+      background-image:url(../img/icon/circle.svg), url(../img/icon/bullhorn.svg);
+    }
+    .main-nav__item:nth-child(5) {
+      background-color: #166BA2;
+      background-image:url(../img/icon/circle.svg), url(../img/icon/bullhorn.svg);
+    }
+    
   /*
-   * Printing Tables:
-   * https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
+   * Hide visually and from screen readers
    */
-  thead {
-    display: table-header-group;
+  
+  .hidden,
+  [hidden] {
+    display: none !important;
   }
-
-  tr,
-  img {
-    page-break-inside: avoid;
+  
+  /*
+   * Hide only visually, but have it available for screen readers:
+   * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+   *
+   * 1. For long content, line feeds are not interpreted as spaces and small width
+   *    causes content to wrap 1 word per line:
+   *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+   */
+  
+  .sr-only {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    /* 1 */
   }
-
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
+  
+  /*
+   * Extends the .sr-only class to allow the element
+   * to be focusable when navigated to via the keyboard:
+   * https://www.drupal.org/node/897638
+   */
+  
+  .sr-only.focusable:active,
+  .sr-only.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    white-space: inherit;
+    width: auto;
   }
-
-  h2,
-  h3 {
-    page-break-after: avoid;
+  
+  /*
+   * Hide visually and from screen readers, but maintain layout
+   */
+  
+  .invisible {
+    visibility: hidden;
   }
-}
-
+  
+  /*
+   * Clearfix: contain floats
+   *
+   * For modern browsers
+   * 1. The space content is one way to avoid an Opera bug when the
+   *    `contenteditable` attribute is included anywhere else in the document.
+   *    Otherwise it causes space to appear at the top and bottom of elements
+   *    that receive the `clearfix` class.
+   * 2. The use of `table` rather than `block` is only necessary if using
+   *    `:before` to contain the top-margins of child elements.
+   */
+  
+  .clearfix::before,
+  .clearfix::after {
+    content: " ";
+    display: table;
+  }
+  
+  .clearfix::after {
+    clear: both;
+  }
+  
+  /* ==========================================================================
+     EXAMPLE Media Queries for Responsive Design.
+     These examples override the primary ('mobile first') styles.
+     Modify as content requires.
+     ========================================================================== */
+  
+  @media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+  }
+  
+  @media print,
+    (-webkit-min-device-pixel-ratio: 1.25),
+    (min-resolution: 1.25dppx),
+    (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+  }
+  
+  /* ==========================================================================
+     Print styles.
+     Inlined to avoid the additional HTTP request:
+     https://www.phpied.com/delay-loading-your-print-css/
+     ========================================================================== */
+  
+  @media print {
+    *,
+    *::before,
+    *::after {
+      background: #fff !important;
+      color: #000 !important;
+      /* Black prints faster */
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
+  
+    a,
+    a:visited {
+      text-decoration: underline;
+    }
+  
+    a[href]::after {
+      content: " (" attr(href) ")";
+    }
+  
+    abbr[title]::after {
+      content: " (" attr(title) ")";
+    }
+  
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+    a[href^="#"]::after,
+    a[href^="javascript:"]::after {
+      content: "";
+    }
+  
+    pre {
+      white-space: pre-wrap !important;
+    }
+  
+    pre,
+    blockquote {
+      border: 1px solid #999;
+      page-break-inside: avoid;
+    }
+  
+    /*
+     * Printing Tables:
+     * https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+    thead {
+      display: table-header-group;
+    }
+  
+    tr,
+    img {
+      page-break-inside: avoid;
+    }
+  
+    p,
+    h2,
+    h3 {
+      orphans: 3;
+      widows: 3;
+    }
+  
+    h2,
+    h3 {
+      page-break-after: avoid;
+    }
+  }
+  
+  
