@@ -8,10 +8,30 @@
  */
 /* ==========================================================================
    TABLE OF CONTENTS
-   ========================================================================== */
- 
- 
+   ========================================================================== 
 
+   1. BASE
+    1.1 Page Rendering Defaults
+    1.2 User Experience Adjustents
+    1.3 Core Styling
+  2.LAYOUT
+    2.1 Core Layout
+    2.2 Main nav mobile first
+    2.3 Small only
+    2.4 Medium and up
+        2.4.1 Medium and up main navigation
+    2.5 Medium only
+    2.6 Large screens and up
+    2.7 Large only
+    2.8 Core article
+  3. MODULES
+    3.1 Page-slider
+    3.2 Project portfolio itemn
+  4. STATES 
+  5. THEME
+    5.1 Main nav colours & icons
+  6. UTILITIES
+  7. PRINT
 
 
 /* ==========================================================================
@@ -105,34 +125,90 @@
      ========================================================================== */
   
   div, section, footer, header {
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
   }
   /* added border to see visually */
   
+  .row { 
+    /* display grid put back here and rest in media screen medium and up breakpoint for mobile display*/
+    display: grid;
+    /* to make grid, need to put display grid here */
+    row-gap: 1rem;
+    /* row gap instead of margins */
+    /* width: 85vw;
+    max-width: 70rem;
+    margin: 0 auto; */
+  }
+
   .column {
-    background-color: rgb(243, 222, 194);
-    margin: 1rem;
+    /* background-color: rgb(243, 222, 194);
+    margin: 1rem; */
   }
   /* added background color to see visually */
 
   .heading {
     text-align: center;
+    font-family: Ubuntu, Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 400;
   }
-  
+
+  .tagline {
+    margin-top: -0.8rem;
+    font-size: 0.7rem;
+    text-align: center;
+    color: rgba(128,128,128);
+
+  }
+
+  .logo {
+    max-height: 2.5rem;
+  }
+
+  .main-nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+  } 
+
+  .main-nav__item {
+    display: block;
+    position: relative;
+    /* relative added  to nav items to allow absolute positioning of child elements*/
+    font-size: 1.3rem;
+    text-decoration: none;
+    text-align: left;
+    color: white;
+    line-height: 4rem;
+    /* line-height to allow for link text vertical positioning */
+    background-repeat: no-repeat; 
+    /* added here from mobile medium */
+  }
   
   /* row is important - decides margins will be and how it will grow */
   
   /* Small only - mobile sites */
-  @media screen and (max-width: 39.9375em) {}
+  @media screen and (max-width: 39.9375em) {
+    .logo {
+      max-height: 3rem;
+    }
+    
+    .s-hide {
+      display:none;
+    }
+
+  }
 
   /* Medium and up - tablet */
   @media screen and (min-width: 40em) {
-    .row {
-      display: grid;
-      /* to make grid, need to put display grid here */
+    .row { 
       width: 85vw;
       max-width: 70rem;
       margin: 0 auto;
+      column-gap: 1.5rem;
+      row-gap: 1.5rem;
+      margin: 0 auto 3rem auto;
+      /* display: grid; /* display grid above and moved from media screen medium and up breakpoint for mobile display*/ */
+      /* to make grid, need to put display grid here */
     }
 
     .m-col-2 {
@@ -154,20 +230,43 @@
     .m-1-2 {
       grid-template-columns: 1fr 2fr;
     }
-  
+
     .span-full {
       grid-column-start: 1;
       grid-column-end: -1;
       /* all instances where there's the initial heading (eg. Things that we do!) add to
       all section headings in the column container */
     }
-  
+
+    .main-nav {
+      display: flex;
+      flex-direction: row;
+    } 
+
+    .main-nav__item {
+      padding: 4rem 1rem 0rem 0.5rem;
+      line-height: 2rem;
+      font-size: 0.8rem;
+      text-align: left;
+      background-color: rgb(184, 184, 184);
+      /* background-repeat: no-repeat; prop should define in mobile version - removed to avoid repeating ourselves */
+      background-position-x: center;
+      background-position-y: center;
+      background-size: 2.3rem, 1.4rem;
+
+    } 
+
   }
+
   /* Medium only - wont' expand more*/
   @media screen and (min-width: 40em) and (max-width: 63.9375em) {
     .special-project {
       grid-column-start: 1;
       grid-column-end: -1;
+    }
+
+    .m-hide {
+      display: none;
     }
   }
   /* Large and up -beyond tablet and up */
@@ -180,8 +279,9 @@
     .l-col-3 {
       grid-template-columns: repeat(3, 1fr);
       /* could use 1fr, 1 fr but use repeat(3, 1fr) to make it easier  */
-  
+    
     }
+
     .l-col-4 {
       grid-template-columns: repeat(4, 1fr);
     }
@@ -190,12 +290,18 @@
     }
     .l-col-6 {
       grid-template-columns: repeat(6, 1fr);
-
     }
+
+    .l-hide {
+      display: none;
+    }
+
   }
+
   /* Large only */
-  @media screen and (min-width: 64em) and
-  (max-width: 74.9375em) {}
+  @media screen and (min-width: 64em) and (max-width: 74.9375em) {
+
+  }
   
   /* work from tablet version and up */
   
@@ -204,21 +310,56 @@
      MODULES
      ========================================================================== */
   
-  
+    .page__slider {
+    background-color: rgb(230, 230, 230);
+    }
+
+    .page__slider img {
+      /* temporary height limit */
+      height: 25vh;
+    }
   
   
   /* ==========================================================================
      THEME
      ========================================================================== */
-  
-     .page__footer {
-      background-color: rgb(230, 230, 230);
-    }
     
     .page__footer {
       background-color: #222;
     }
-  
+
+    .inverted {
+      color: white;
+    }
+
+    /* main nav colours & icons */
+    /* to add colors - used nth() selector instead of specifically naming ea menu item */
+    /* each nav item is counted w/ a nth() pseudo class selector - it matches elements based on their
+    position in a group of siblings */
+    /* added icons - 1 svg for circle and 1 for icon - both added as layered background */
+
+    .main-nav__item:nth-child(1) {
+      background-color: #25C389;
+      background-image:url(../img/icon/circle.svg), url(../img/icon/bullhorn.svg);
+    }
+
+    .main-nav__item:nth-child(2) {
+      background-color: #FFB901;
+      background-image:url(../img/icon/circle.svg), url(../img/icon/bullhorn.svg);
+    }
+    .main-nav__item:nth-child(3) {
+      background-color: #DE6262;
+      background-image:url(../img/icon/circle.svg), url(../img/icon/bullhorn.svg);
+    }
+    .main-nav__item:nth-child(4) {
+      background-color: #1691BD;
+      background-image:url(../img/icon/circle.svg), url(../img/icon/bullhorn.svg);
+    }
+    .main-nav__item:nth-child(5) {
+      background-color: #166BA2;
+      background-image:url(../img/icon/circle.svg), url(../img/icon/bullhorn.svg);
+    }
+    
   /*
    * Hide visually and from screen readers
    */

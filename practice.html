@@ -15,26 +15,35 @@
   <link rel="manifest" href="site.webmanifest">
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
 
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="practicenormalize.css">
   <link rel="stylesheet" href="practice.css">
 
   <meta name="theme-color" content="#fafafa">
 </head>
 
-<body class="page homepage-home">
+<body class="page page-home">
   <header class="page__header">
     <div class="row m-1-2">
-      <div>
-        <p>logo here</p>
+      <nav class="mobile-nav m-hide l-hide"> <!-- hide content by hiding classes to hide specific parts of layout depending on media breakpoints -->
+        Mobile Menu 
+      </nav>
+      <div class="column">
+        <img class="logo" src = img/placeholder.svg alt="slider placeholder"/>
       </div>
-      <div>
-        <p>Menu here</p>
-      </div>
+      <nav class="column main-nav">
+        <a href="#" class="main-nav__item active">home</a>
+        <a href="#" class="main-nav__item">pages</a>
+        <a href="#" class="main-nav__item">blog</a>
+        <a href="#" class="main-nav__item">portfolio</a>
+        <a href="#" class="main-nav__item">contact</a>
+      </nav>
     </div>
   </header>
 
-  <div class="page__slider">
+  <div class="page__slider s-hide">
     <div class="row">
       <div class="column">
         <img src="img/slider.png" alt="slider placeholder">
@@ -55,7 +64,7 @@
     <div class="row l-col-4">
       <div class="column span-full">
         <h2 class="heading">Things that we do!</h2>
-        <p>Ask what what we can do for you</p>
+        <p class="tagline">Ask what what we can do for you</p>
       </div>
       <div class="column">
         <h3 class ="heading">Web Solutions</h3>
@@ -76,10 +85,10 @@
     <div class="row m-col-2 l-col-3">
       <div class="column span-full">
         <h2 class="heading">What's Up Lately?</h2>
-        <p>Read up on our latest work</p>
+        <p class="tagline">Read up on our latest work</p>
       </div>
 
-      <div class="column">
+      <div class="column special-project">
         <figure class="project">
           <img src="img/placeholder.svg" alt="placeholder">
           <figcaption class="project__caption">
@@ -118,7 +127,7 @@
     <div class="row m-col-2 l-col-3">
       <div class="column span-full">
         <h2 class="heading">Our Latest Projects</h2>
-        <p>Client happy? We are happy.</p>
+        <p class="tagline">Client happy? We are happy.</p>
       </div>
 
       <div class="column">
@@ -189,7 +198,7 @@
       <!-- column stacks overtop of each other -->
       <div class="column span-full">
         <h2 class="heading">Things of Above</h2>
-        <p>Misc Stuff we could not put anyplace else</p>
+        <p class="tagline"> Misc Stuff we could not put anyplace else</p>
       </div>
       <div class="column">
         <p>GUI Element</p>
@@ -237,7 +246,7 @@
       </div>
       <div class="column">
         <h4>Flickr Photos</h4>
-        <div class="minion_icon column">
+        <!-- <div class="minion_icon column">
           <img src="img/placeholder.svg" alt="placeholder">
         </div>
         <div class="minion_icon column">
@@ -254,7 +263,7 @@
         </div>
         <div class="minion_icon column">
           <img src="img/placeholder.svg" alt="placeholder">
-        </div>
+        </div> -->
       </div>
       <div class="column">
         <h4>Recent Tweets</h4>
