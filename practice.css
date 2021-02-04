@@ -54,6 +54,7 @@
    *
    * Customize the background color to match your design.
    */
+
   
   ::-moz-selection {
     background: #b3d4fc;
@@ -138,9 +139,12 @@
     /* width: 85vw;
     max-width: 70rem;
     margin: 0 auto; */
+    margin: 0 1rem 3rem 1rem;
   }
+  /* row is important - decides margins will be and how it will grow */
 
   .column {
+    position: relative;
     /* background-color: rgb(243, 222, 194);
     margin: 1rem; */
   }
@@ -162,6 +166,8 @@
 
   .logo {
     max-height: 2.5rem;
+    position: absolute;
+    bottom: 0;
   }
 
   .main-nav {
@@ -174,6 +180,8 @@
     display: block;
     position: relative;
     /* relative added  to nav items to allow absolute positioning of child elements*/
+    width: 100%;
+    padding: 1rem 1rem 1rem 100%;
     font-size: 1.3rem;
     text-decoration: none;
     text-align: left;
@@ -182,18 +190,62 @@
     /* line-height to allow for link text vertical positioning */
     background-repeat: no-repeat; 
     /* added here from mobile medium */
+    background-position-x: 44%;
+    background-position-y: center;
+    background-size: 3.1rem, 1.7rem;
   }
   
-  /* row is important - decides margins will be and how it will grow */
+  .main-nav__item::after {
+    content: ">";
+    /* visual mockup tells us that a small right pointing angle bracket should be affixed to the link text  */
+    display: inline-block;
+    position: absolute;
+    right: 1rem;
+  }
+  /* ::after pseudo class helpful when we need content added without actually adding content in HTML */
+  /* absolute positioning & 1rem right ensure that bracket will be aligned to far right at 1rem margin - works bc parent element's
+  position is set to relative */
+
+  .main-nav__item.active::after {
+    content: "";
+  }
   
   /* Small only - mobile sites */
   @media screen and (max-width: 39.9375em) {
     .logo {
       max-height: 3rem;
+      position: static;
     }
     
     .s-hide {
       display:none;
+    }
+
+    .s-show {
+      display: flex;
+    }
+
+    .mobile-nav {
+      position: absolute;
+      right: 1rem;
+      top: 0rem;
+      z-index: 1;
+      font-size: 0rem;
+      padding: 1.5rem;
+      background-image:url(../img/icon/bars.svg);
+      background-repeat: no-repeat;
+      background-size: 1.8rem;
+      background-position: center center;
+      background-color: #2A6EEB;
+      /*  for hamburger menu - only add to small breakpoint point */
+      /* absolute positioning within relatively positioned row to position to the top right */
+    }
+
+    .main-nav__item::after {
+      display: inline-block;
+      position: static;
+      /* static returns to its original position */
+      padding-left: 1rem;
     }
 
   }
